@@ -7,16 +7,44 @@
   background: url("../pics/bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-}
-
-* {
-  color: $wh;
+  h1 {
+    padding: 10vh 8vh;
+  }
+  h1,
+  div:nth-of-type(2) {
+    font-size: calc(2rem + 4vw);
+    background: rgba(0, 0, 0, 0.85);
+  }
+  div p {
+    font-size: calc(0.8rem + 0.7vw);
+  }
+  h1,
+  div p {
+    color: $wh;
+  }
 }
 
 h1 {
   font-family: "Njord", cursive;
 }
 
-.text-right h1 {
-  font-size: calc(2rem + 2vw);
+.separation {
+  background: $main-color;
+  width: 9rem;
+  height: 0.7rem;
+  margin: 4vh 0;
+}
+
+.homepage-container .CTA {
+  color: $wh;
+  font-size: calc(1rem + 0.5vw);
+  background: $main-color;
+  padding: 0.5rem 2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: $transition;
+  float: right;
+  &:hover {
+    border-radius: 0;
+  }
 }
