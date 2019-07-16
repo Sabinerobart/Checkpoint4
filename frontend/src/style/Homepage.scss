@@ -1,0 +1,22 @@
+@import "../index.scss";
+
+.homepage-container {
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  background: url("../pics/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+* {
+  color: $wh;
+}
+
+h1 {
+  font-family: "Njord", cursive;
+}
+
+.text-right h1 {
+  font-size: calc(2rem + 2vw);
+}

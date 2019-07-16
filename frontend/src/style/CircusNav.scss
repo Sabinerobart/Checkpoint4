@@ -1,0 +1,26 @@
+@import "../index.scss";
+
+@font-face {
+  font-family: "Njord";
+  src: url("./fonts/Njord-Alternate.otf");
+}
+
+header {
+  position: fixed;
+  top: 0;
+}
+
+.navbar {
+  background: $bl;
+  width: 100vw;
+  a {
+    color: rgba($wh, 0.8);
+    transition: $transition;
+    &:hover {
+      color: $wh;
+    }
+  }
+  .navbar-brand {
+    font-family: "Njord", cursive;
+  }
+}
