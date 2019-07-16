@@ -8,11 +8,13 @@
 header {
   position: fixed;
   top: 0;
+  z-index: 9000;
 }
 
 .navbar {
   background: $bl;
   width: 100vw;
+  box-shadow: $shadow;
   a {
     color: rgba($wh, 0.8);
     transition: $transition;
@@ -22,5 +24,14 @@ header {
   }
   .navbar-brand {
     font-family: "Njord", cursive;
+    &:hover svg {
+      stroke: $main-color;
+    }
+    svg {
+      transition: $transition;
+    }
+  }
+  .navbar-collapse ul a {
+    text-decoration: none;
   }
 }
