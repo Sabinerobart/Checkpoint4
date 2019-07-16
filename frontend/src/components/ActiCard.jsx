@@ -63,7 +63,7 @@ class ActiCard extends React.Component {
         </CardBody>
         <CardFooter>
           <Heart
-            onClick={this.handleClick}
+            onClick={() => this.handleClick()}
             className={liked ? "liked" : "notLiked"}
           />
         </CardFooter>
