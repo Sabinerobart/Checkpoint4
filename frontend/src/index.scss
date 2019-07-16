@@ -12,9 +12,15 @@ code {
     monospace;
 }
 
-$main-color: #f6003f;
+$main-color: #ff4880;
 $secondary-color: goldenrod;
 $third-color: #f8d5c7;
 $wh: #fbf4f1;
 $bl: #222;
 $transition: 0.2s;
+$shadow: 0.2rem 0.5rem 1rem rgba(0, 0, 0, 0.4);
+
+.centered {
+  justify-content: center;
+  align-items: center;
+}
