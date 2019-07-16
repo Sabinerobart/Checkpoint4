@@ -5,14 +5,16 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Row,
+  Col
 } from "reactstrap";
+import { NavLink } from "react-router-dom";
 import "../style/CircusNav.scss";
+import { User, Star } from "react-feather";
 
 class CircusNav extends React.Component {
   constructor(props) {
@@ -31,22 +33,31 @@ class CircusNav extends React.Component {
   render() {
     return (
       <div>
-        <Navbar expand="md">
-          <NavbarBrand href="/">Wildest Circus</NavbarBrand>
+        <Navbar expand="md" className="px-5">
+          <NavbarBrand href="/">
+            <Row className="centered">
+              <Col xs="6" className="d-flex centered p-0">
+                <Star />
+              </Col>
+              <Col xs="6">
+                Wildest
+                <br />
+                Circus
+              </Col>
+            </Row>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
-                  GitHub
-                </NavLink>
-              </NavItem>
+            <Nav className="ml-auto align-items-center" navbar>
+              <NavLink to="/prestations" className="mx-2 px-3">
+                Prestations
+              </NavLink>
+              <NavLink to="/favoris" className="mx-2 px-3">
+                Favoris
+              </NavLink>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Options
+                  <User />
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>Option 1</DropdownItem>
