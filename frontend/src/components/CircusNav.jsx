@@ -34,7 +34,6 @@ class CircusNav extends React.Component {
 
   onClick() {
     localStorage.removeItem("user");
-    this.props.history.push("/connexion");
   }
 
   componentDidMount() {
@@ -48,7 +47,7 @@ class CircusNav extends React.Component {
     const user = this.state.profile;
     return (
       <div>
-        <Navbar expand="md" className="px-5">
+        <Navbar expand="md" dark className="px-5">
           <NavbarBrand href="/">
             <Row className="centered">
               <Col xs="6" className="d-flex centered p-0">
@@ -64,11 +63,17 @@ class CircusNav extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto align-items-center" navbar>
-              <NavLink to="/prestations" className="mx-2 px-3">
+              <NavLink
+                to="/prestations"
+                className="mx-2 px-3 hvr-underline-from-left"
+              >
                 Prestations
               </NavLink>
               {user ? (
-                <NavLink to="/favoris" className="mx-2 px-3">
+                <NavLink
+                  to="/favoris"
+                  className="mx-2 px-3 hvr-underline-from-left"
+                >
                   Favoris
                 </NavLink>
               ) : null}
@@ -82,6 +87,7 @@ class CircusNav extends React.Component {
                   </DropdownItem>
                   <DropdownItem>
                     <a
+                      href="/connexion"
                       onClick={() => {
                         this.onClick();
                       }}
