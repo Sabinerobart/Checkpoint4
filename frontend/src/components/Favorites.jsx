@@ -7,13 +7,18 @@ export default class Favorites extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fav: []
+      fav: [],
+      profile: ""
     };
   }
 
   componentDidMount() {
-    // change to current user in localhost
-    const authorId = 2;
+    if ("user" in localStorage) {
+      const authorId = JSON.parse(localStorage.getItem("user")).id;
+      this.setState({ profile: authorId });
+    }
+
+    const authorId = this.state.profile;
     axios.get(`http://localhost:5050/favs/${authorId}`).then(({ data }) => {
       this.setState({ fav: data });
     });
