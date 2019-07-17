@@ -31,7 +31,7 @@ export default class Favorites extends Component {
               <div className="separation" />
               <p>{fav.content}</p>
               <div style={{ position: "relative" }}>
-                <img src={fav.image} />
+                <img src={fav.image} alt="cook" />
                 <div className="overlay" />
               </div>
             </Col>
