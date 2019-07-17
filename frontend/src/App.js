@@ -5,7 +5,7 @@ import CircusNav from "./components/CircusNav";
 import Homepage from "./components/Homepage";
 import Activities from "./components/Activities";
 import Favorites from "./components/Favorites";
-// import Profile from "./components/Profile";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route path="/Prestations" component={Activities} />
         <Route path="/Favoris" component={Favorites} />
-        {/* <Route path="/Profil" component={Profile} /> */}
+        <Route path="/connexion" component={Login} />
       </Switch>
     </React.Fragment>
   );
