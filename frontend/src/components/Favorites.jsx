@@ -13,12 +13,8 @@ export default class Favorites extends Component {
   }
 
   componentDidMount() {
-    if ("user" in localStorage) {
-      const authorId = JSON.parse(localStorage.getItem("user")).id;
-      this.setState({ profile: authorId });
-    }
+    const authorId = JSON.parse(localStorage.getItem("user")).id;
 
-    const authorId = this.state.profile;
     axios.get(`http://localhost:5050/favs/${authorId}`).then(({ data }) => {
       this.setState({ fav: data });
     });
@@ -31,8 +27,13 @@ export default class Favorites extends Component {
         {favs.map((fav, key) => {
           return (
             <Col md="5" key={key} className="m-5">
-              <p>{fav.title}</p>
+              <h1>{fav.title}</h1>
+              <div className="separation" />
               <p>{fav.content}</p>
+              <div style={{ position: "relative" }}>
+                <img src={fav.image} />
+                <div className="overlay" />
+              </div>
             </Col>
           );
         })}
