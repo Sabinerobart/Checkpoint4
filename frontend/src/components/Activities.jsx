@@ -9,18 +9,24 @@ class Activities extends Component {
     super(props);
     this.state = {
       infos: [],
-      actiLiked: null
+      actiLiked: null,
+      profile: ""
     };
   }
 
   componentDidMount() {
-    const authorId = 2;
     axios.get(`http://localhost:5050/activities`).then(({ data }) => {
       this.setState({
         infos: data
       });
     });
 
+    if ("user" in localStorage) {
+      const authorId = JSON.parse(localStorage.getItem("user")).id;
+      this.setState({ profile: authorId });
+    }
+
+    const authorId = this.state.profile;
     axios.get(`http://localhost:5050/likes/${authorId}`).then(({ data }) => {
       this.setState({ actiLiked: data });
     });
@@ -29,7 +35,7 @@ class Activities extends Component {
   render() {
     const activities = this.state.infos;
     const actiLiked = this.state.actiLiked;
-
+    console.log(this.state.profile);
     return (
       <Container>
         <Row className="activities-container align-items-center">
