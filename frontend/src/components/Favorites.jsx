@@ -26,7 +26,7 @@ export default class Favorites extends Component {
       <Row className="centered favs-container">
         {favs.map((fav, key) => {
           return (
-            <Col md="5" key={key} className="m-5">
+            <Col md="5" key={key} className="m-5 fav-card">
               <h1>{fav.title}</h1>
               <div className="separation" />
               <p>{fav.content}</p>
