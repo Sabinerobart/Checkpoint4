@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.scss";
+import { Route, Switch } from "react-router-dom";
+import CircusNav from "./components/CircusNav";
+import Homepage from "./components/Homepage";
+import Activities from "./components/Activities";
+import Favorites from "./components/Favorites";
+// import Profile from "./components/Profile";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <React.Fragment>
+      <header>
+        <CircusNav className="App-header" />
       </header>
-    </div>
+      <Switch>
+        <Route exact path="/" component={Homepage} />
+        <Route path="/Prestations" component={Activities} />
+        <Route path="/Favoris" component={Favorites} />
+        {/* <Route path="/Profil" component={Profile} /> */}
+      </Switch>
+    </React.Fragment>
   );
 }
 

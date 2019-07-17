@@ -1,0 +1,54 @@
+@import "../index.scss";
+
+.container {
+  margin-top: 10vh;
+}
+
+p {
+  color: $bl;
+}
+
+.card {
+  margin: 2rem 0;
+  width: 90%;
+  &:nth-of-type(even) {
+    margin-left: 10%;
+  }
+}
+
+.card-title {
+  img {
+    width: 100%;
+    margin: 0;
+  }
+  h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $wh;
+    font-size: calc(1rem + 2vw);
+  }
+}
+
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  svg {
+    stroke: $bl;
+    margin: 0 3vw;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.liked {
+  fill: $main-color;
+  stroke: none !important;
+}
+
+.notLiked {
+  fill: #ccc;
+  stroke: none !important;
+}
