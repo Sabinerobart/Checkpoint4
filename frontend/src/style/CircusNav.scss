@@ -16,12 +16,8 @@ header {
   width: 100vw;
   box-shadow: $shadow;
   a {
-    color: rgba($wh, 0.8);
     font-family: "Njord regular", cursive;
     letter-spacing: 2px;
-    &:hover {
-      color: $wh;
-    }
     &:hover svg {
       stroke: $main-color;
     }
@@ -37,8 +33,13 @@ header {
   .navbar-brand {
     font-family: "Njord", cursive;
   }
-  .navbar-collapse ul a {
+  .navbar-collapse ul a,
+  .navbar-brand {
     text-decoration: none;
+    color: rgba($wh, 0.8);
+    &:hover {
+      color: $wh;
+    }
   }
 }
 
