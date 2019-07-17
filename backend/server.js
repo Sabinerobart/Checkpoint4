@@ -119,6 +119,26 @@ app.post("/login", (req, res) => {
   );
 });
 
+// Add new Content
+
+app.post("/newContent", (req, res) => {
+  const title = req.body.title;
+  const content = req.body.content;
+  db.query(
+    `INSERT INTO content (title, content, created_at) VALUES ("${title}", "${content}", NOW())`,
+    (err, rows) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send("error when getting user route");
+      }
+      if (!rows) {
+        return res.status(404).send("No user found");
+      }
+      res.status(200).send(rows);
+    }
+  );
+});
+
 app.listen(portNumber, () => {
   console.log(`API root available at: http://localhost:${portNumber}/`);
 });
