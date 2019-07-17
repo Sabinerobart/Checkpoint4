@@ -24,12 +24,10 @@ class Activities extends Component {
     if ("user" in localStorage) {
       const authorId = JSON.parse(localStorage.getItem("user")).id;
       this.setState({ profile: authorId });
+      axios.get(`http://localhost:5050/likes/${authorId}`).then(({ data }) => {
+        this.setState({ actiLiked: data });
+      });
     }
-
-    const authorId = this.state.profile;
-    axios.get(`http://localhost:5050/likes/${authorId}`).then(({ data }) => {
-      this.setState({ actiLiked: data });
-    });
   }
 
   render() {
