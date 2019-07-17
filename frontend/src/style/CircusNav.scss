@@ -17,21 +17,34 @@ header {
   box-shadow: $shadow;
   a {
     color: rgba($wh, 0.8);
-    transition: $transition;
+    font-family: "Njord regular", cursive;
+    letter-spacing: 2px;
     &:hover {
       color: $wh;
+    }
+    &:hover svg {
+      stroke: $main-color;
+    }
+    &:hover:not(.dropdown-toggle) svg {
+      animation: $transition rotate;
+    }
+    @keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
     }
   }
   .navbar-brand {
     font-family: "Njord", cursive;
-    &:hover svg {
-      stroke: $main-color;
-    }
-    svg {
-      transition: $transition;
-    }
   }
   .navbar-collapse ul a {
     text-decoration: none;
   }
+}
+
+.navbar-nav
+  li.dropdown.show.nav-item
+  div.dropdown-menu.dropdown-menu-right.show,
+.dropdown-menu .dropdown-item:hover {
+  background: $bl;
 }
