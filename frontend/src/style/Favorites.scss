@@ -1,0 +1,31 @@
+@import "../index.scss";
+
+.favs-container {
+  margin-top: 15vh;
+  div p {
+    color: $bl;
+    padding: 3vh 0;
+  }
+  .fav-card:nth-of-type(odd) {
+    animation: slide-left 0.5s;
+    @keyframes slide-left {
+      from {
+        transform: translate(-50vw);
+      }
+      to {
+        transform: translate(0);
+      }
+    }
+  }
+  .fav-card:nth-of-type(even) {
+    animation: slide-right 0.5s;
+    @keyframes slide-right {
+      from {
+        transform: translate(50vw);
+      }
+      to {
+        transform: translate(0);
+      }
+    }
+  }
+}
