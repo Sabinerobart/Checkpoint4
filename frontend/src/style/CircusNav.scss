@@ -16,12 +16,8 @@ header {
   width: 100vw;
   box-shadow: $shadow;
   a {
-    color: rgba($wh, 0.8);
     font-family: "Njord regular", cursive;
     letter-spacing: 2px;
-    &:hover {
-      color: $wh;
-    }
     &:hover svg {
       stroke: $main-color;
     }
@@ -35,10 +31,16 @@ header {
     }
   }
   .navbar-brand {
-    font-family: "Njord", cursive;
+    font-family: "Njord";
   }
-  .navbar-collapse ul a {
+
+  .navbar-collapse ul a,
+  .navbar-brand {
     text-decoration: none;
+    color: rgba($wh, 0.8);
+    &:hover {
+      color: $wh;
+    }
   }
 }
 
@@ -47,4 +49,32 @@ header {
   div.dropdown-menu.dropdown-menu-right.show,
 .dropdown-menu .dropdown-item:hover {
   background: $bl;
+}
+
+.hvr-underline-from-left {
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  position: relative;
+  overflow: hidden;
+}
+
+.hvr-underline-from-left:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  background: $main-color;
+  height: 10px;
+  transition-property: right;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+
+.hvr-underline-from-left:hover:before,
+.hvr-underline-from-left:focus:before,
+.hvr-underline-from-left:active:before {
+  right: 0;
 }

@@ -19,7 +19,7 @@ class ActiCard extends React.Component {
   }
 
   handleClick() {
-    const currentUser = 2;
+    const currentUser = JSON.parse(localStorage.getItem("user")).id;
     const activityId = this.props.acti.id;
     if (!this.state.isLiked) {
       axios
@@ -50,14 +50,15 @@ class ActiCard extends React.Component {
     const liked = actiLiked && actiLiked.indexOf(acti.id) !== -1 ? true : false;
     return (
       <Card>
-        <CardBody className="d-flex p-0">
-          <Col md="5" className="p-0">
+        <CardBody className="row m-0 d-flex p-0">
+          <Col xs="12" md="5" className="p-0">
             <CardTitle className="m-0">
               <img src={acti.image} alt="" />
               <h1>{acti.title}</h1>
+              <div className="overlay" />
             </CardTitle>
           </Col>
-          <Col md="7" className="d-flex align-items-center p-5">
+          <Col xs="12" md="7" className="col-12 d-flex align-items-center px-5">
             <CardText>{acti.content}</CardText>
           </Col>
         </CardBody>

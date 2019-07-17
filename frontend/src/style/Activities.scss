@@ -1,18 +1,39 @@
 @import "../index.scss";
 
+@font-face {
+  font-family: "Vollkorn";
+  src: url("./fonts/Vollkorn-Regular.ttf");
+}
+
 .container {
-  margin-top: 10vh;
+  margin-top: 15vh;
+  animation: appear 0.5s;
+  @keyframes appear {
+    from {
+      transform: translate(-100vw);
+    }
+    to {
+      transform: translate(0);
+    }
+  }
 }
 
 p {
   color: $bl;
+  font-family: "Vollkorn", serif;
+  font-size: calc(0.9rem + 0.2vw);
 }
 
 .card {
   margin: 2rem 0;
   width: 90%;
+  border: 3px solid $bl !important;
+  box-shadow: 0.2rem 0.2rem 1rem rgba($bl, 0.1);
   &:nth-of-type(even) {
     margin-left: 10%;
+  }
+  &:hover h1 {
+    text-shadow: 2px 2px 7px $bl;
   }
 }
 
@@ -28,12 +49,16 @@ p {
     transform: translate(-50%, -50%);
     color: $wh;
     font-size: calc(1rem + 2vw);
+    z-index: 8000;
+    text-shadow: 2px 2px 5px rgba($bl, 0.9);
+    transition: $transition;
   }
 }
 
 .card-footer {
   display: flex;
   justify-content: flex-end;
+  border-top: 1px solid $bl !important;
   svg {
     stroke: $bl;
     margin: 0 3vw;

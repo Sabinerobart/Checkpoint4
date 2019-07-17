@@ -18,10 +18,13 @@ class Homepage extends Component {
           <div>
             <div className="separation" />
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
-              aliquam aspernatur, ipsum, reprehenderit quidem, ab provident sit
-              sint tenetur id praesentium unde est quam dolor omnis reiciendis
-              quasi! Ipsum, pariatur?
+              Un cirque est une troupe d'artistes, traditionnellement
+              itinérante, qui comporte le plus souvent des acrobates, propose
+              des numéros de dressage et de domptage d’animaux et donne des
+              spectacles de clowns et des tours de magie. Plus généralement au
+              XXIe siècle, le cirque est un spectacle vivant populaire organisé
+              autour d’une scène circulaire. Le terme cirque vient du latin
+              circus, en référence à une enceinte circulaire.
             </p>
           </div>
           <Link to="/prestations" className="CTA">
