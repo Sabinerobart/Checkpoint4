@@ -19,7 +19,7 @@ class ActiCard extends React.Component {
   }
 
   handleClick() {
-    const currentUser = 2;
+    const currentUser = JSON.parse(localStorage.getItem("user")).id;
     const activityId = this.props.acti.id;
     if (!this.state.isLiked) {
       axios
