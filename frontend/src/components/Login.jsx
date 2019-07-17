@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap";
+import {
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Row,
+  Col,
+  Container
+} from "reactstrap";
 import "../style/Login.scss";
 import axios from "axios";
 
@@ -8,7 +17,9 @@ class Login extends Component {
     super(props);
     this.state = {
       nickname: "",
-      profile: ""
+      profile: "",
+      title: "",
+      content: ""
     };
   }
 
@@ -35,45 +46,100 @@ class Login extends Component {
       });
   }
 
+  submitContent(e) {
+    e.preventDefault();
+    let { title, content } = this.state;
+    axios
+      .post(`http://localhost:5050/newContent`, {
+        title,
+        content
+      })
+      .then(({ data }) => {
+        this.setState({
+          title: data.title,
+          content: data.content
+        });
+      });
+  }
+
   componentDidMount() {
     if ("user" in localStorage) {
-      const user = JSON.parse(localStorage.getItem("user")).nickname;
+      const user = JSON.parse(localStorage.getItem("user"));
       this.setState({ profile: user });
     }
   }
 
   render() {
+    console.log(this.state.content);
     const user = this.state.profile;
     return (
-      <Row className="form-container centered">
-        <Col xs="6">
-          <Form
-            onSubmit={e => {
-              this.handleSubmit(e);
-            }}
-          >
-            <h2>Connecte-toi !</h2>
-            <div className="trait" />
-
-            <FormGroup>
-              <Label htmlFor="nickname">Pseudo</Label>
-              <Input
-                type="text"
-                name="nickname"
-                id="nickname"
-                value={this.state.nickname}
-                onChange={e => {
-                  this.handleChange(e);
-                }}
-              />
-              <Button type="submit">Submit</Button>
-            </FormGroup>
-          </Form>
-        </Col>
-        <Col xs="6">
-          <p>{user ? `Hello, ${user}` : null}</p>
-        </Col>
-      </Row>
+      <Container>
+        <Row className="form-container">
+          <Col xs="6">
+            <Form
+              onSubmit={e => {
+                this.handleSubmit(e);
+              }}
+            >
+              <h1>Connecte-toi !</h1>
+              <FormGroup>
+                <Label htmlFor="nickname">Pseudo</Label>
+                <Input
+                  type="text"
+                  name="nickname"
+                  id="nickname"
+                  value={this.state.nickname}
+                  onChange={e => {
+                    this.handleChange(e);
+                  }}
+                />
+                <Button type="submit">Submit</Button>
+              </FormGroup>
+            </Form>
+          </Col>
+          <Col xs="6">
+            {user.is_admin ? (
+              <React.Fragment>
+                <h1>Hello, {user.nickname} !</h1>
+                <Form
+                  onSubmit={e => {
+                    this.submitContent(e);
+                  }}
+                >
+                  <FormGroup>
+                    <Label htmlFor="title">Titre</Label>
+                    <Input
+                      type="text"
+                      name="title"
+                      id="title"
+                      value={this.state.title}
+                      onChange={e => {
+                        this.handleChange(e);
+                      }}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label htmlFor="content">Contenu</Label>
+                    <Input
+                      type="textarea"
+                      name="content"
+                      id="content"
+                      style={{ height: "300px" }}
+                      value={this.state.content}
+                      onChange={e => {
+                        this.handleChange(e);
+                      }}
+                    />
+                  </FormGroup>
+                  <Button type="submit">Submit</Button>
+                </Form>
+              </React.Fragment>
+            ) : (
+              `Hello, ${user.nickname}`
+            )}
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
