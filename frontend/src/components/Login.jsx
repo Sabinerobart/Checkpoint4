@@ -74,14 +74,14 @@ class Login extends Component {
     const user = this.state.profile;
     return (
       <Container>
-        <Row className="form-container centered">
+        <Row className="form-container">
           <Col xs="6">
             <Form
               onSubmit={e => {
                 this.handleSubmit(e);
               }}
             >
-              <h2>Connecte-toi !</h2>
+              <h1>Connecte-toi !</h1>
               <FormGroup>
                 <Label htmlFor="nickname">Pseudo</Label>
                 <Input
