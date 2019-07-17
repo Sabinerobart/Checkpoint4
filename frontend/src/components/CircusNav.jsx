@@ -12,7 +12,7 @@ import {
   Row,
   Col
 } from "reactstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "../style/CircusNav.scss";
 import { User, Star } from "react-feather";
 
@@ -22,7 +22,8 @@ class CircusNav extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      profile: null
     };
   }
   toggle() {
@@ -30,7 +31,21 @@ class CircusNav extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  onClick() {
+    localStorage.removeItem("user");
+    this.props.history.push("/connexion");
+  }
+
+  componentDidMount() {
+    if ("user" in localStorage) {
+      const authorId = JSON.parse(localStorage.getItem("user")).id;
+      this.setState({ profile: authorId });
+    }
+  }
+
   render() {
+    const user = this.state.profile;
     return (
       <div>
         <Navbar expand="md" className="px-5">
@@ -52,18 +67,28 @@ class CircusNav extends React.Component {
               <NavLink to="/prestations" className="mx-2 px-3">
                 Prestations
               </NavLink>
-              <NavLink to="/favoris" className="mx-2 px-3">
-                Favoris
-              </NavLink>
+              {user ? (
+                <NavLink to="/favoris" className="mx-2 px-3">
+                  Favoris
+                </NavLink>
+              ) : null}
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   <User />
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
+                  <DropdownItem>
+                    <Link to="/connexion">Connexion</Link>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <a
+                      onClick={() => {
+                        this.onClick();
+                      }}
+                    >
+                      Déconnexion
+                    </a>
+                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
