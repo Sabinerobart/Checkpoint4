@@ -70,8 +70,8 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.state.content);
     const user = this.state.profile;
+    let disabled = true;
     return (
       <Container>
         <Row className="form-container">
@@ -109,6 +109,7 @@ class Login extends Component {
                   <FormGroup>
                     <Label htmlFor="title">Titre</Label>
                     <Input
+                      disabled={user.is_admin ? "" : disabled}
                       type="text"
                       name="title"
                       id="title"
@@ -122,6 +123,7 @@ class Login extends Component {
                     <Label htmlFor="content">Contenu</Label>
                     <Input
                       type="textarea"
+                      disabled={user.is_admin ? "" : disabled}
                       name="content"
                       id="content"
                       style={{ height: "300px" }}
@@ -135,7 +137,7 @@ class Login extends Component {
                 </Form>
               </React.Fragment>
             ) : (
-              `Hello, ${user.nickname}`
+              <h1>{user ? `Hello, ${user.nickname}` : "Hello, Stranger"}</h1>
             )}
           </Col>
         </Row>
